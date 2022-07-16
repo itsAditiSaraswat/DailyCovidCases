@@ -51,40 +51,42 @@ function displayData(APIdata) {
 
   const fetchValue = (e) => {
     // displaying table
-    var table2 = document.getElementById("table-2");
-    table2.style.display = "block";
-
     var idd = selectId.value;
-    // loop to find corresponding index
-    var correspondingIndex;
-    for (let i = 0; i <= newIdArray.length; i++) {
-      if (newIdArray[i] == idd) {
-        correspondingIndex = i;
-        break;
+    if (idd != 0) {
+      var table2 = document.getElementById("table-2");
+      table2.style.display = "block";
+
+      // loop to find corresponding index
+      var correspondingIndex;
+      for (let i = 0; i <= newIdArray.length; i++) {
+        if (newIdArray[i] == idd) {
+          correspondingIndex = i;
+          break;
+        }
       }
+
+      var found = Object.entries(propertyNames[3][1][correspondingIndex]);
+
+      // reference
+      var countryTitle = document.querySelector(".country-name");
+      var countryTotalCases = document.querySelector(".country-totalCases");
+      var countryTotalRecovered = document.querySelector(
+        ".country-totalRecovered"
+      );
+      var countryTotalDeaths = document.querySelector(".country-totalDeaths");
+      var countryNewCases = document.querySelector(".country-newCases");
+      var countryNewRecovered = document.querySelector(".country-newRecovered");
+      var countryNewDeaths = document.querySelector(".country-newDeaths");
+
+      countryTitle.innerHTML = `${found[1][1]}`;
+      countryTotalCases.innerHTML = `${found[5][1]}`;
+      countryTotalRecovered.innerHTML = `${found[9][1]}`;
+      countryTotalDeaths.innerHTML = `${found[7][1]}`;
+
+      countryNewCases.innerHTML = `${found[4][1]}`;
+      countryNewRecovered.innerHTML = `${found[8][1]}`;
+      countryNewDeaths.innerHTML = `${found[6][1]}`;
     }
-
-    var found = Object.entries(propertyNames[3][1][correspondingIndex]);
-
-    // reference
-    var countryTitle = document.querySelector(".country-name");
-    var countryTotalCases = document.querySelector(".country-totalCases");
-    var countryTotalRecovered = document.querySelector(
-      ".country-totalRecovered"
-    );
-    var countryTotalDeaths = document.querySelector(".country-totalDeaths");
-    var countryNewCases = document.querySelector(".country-newCases");
-    var countryNewRecovered = document.querySelector(".country-newRecovered");
-    var countryNewDeaths = document.querySelector(".country-newDeaths");
-
-    countryTitle.innerHTML = `${found[1][1]}`;
-    countryTotalCases.innerHTML = `${found[5][1]}`;
-    countryTotalRecovered.innerHTML = `${found[9][1]}`;
-    countryTotalDeaths.innerHTML = `${found[7][1]}`;
-
-    countryNewCases.innerHTML = `${found[4][1]}`;
-    countryNewRecovered.innerHTML = `${found[8][1]}`;
-    countryNewDeaths.innerHTML = `${found[6][1]}`;
   };
   document
     .querySelector(".changeSelected")

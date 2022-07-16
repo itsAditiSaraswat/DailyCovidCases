@@ -97,7 +97,7 @@ td {
   background-color: transparent;
 }
 .form-control {
-  background-color: var(--color-lightest);
+  background-color: #ddd;
   border: none;
   outline: none;
 }
